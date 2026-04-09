@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Memories 💕</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+  font-family:'Poppins', sans-serif;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:40px 20px;
+  overflow-x:auto;
+}
+
+/* Stickers */
+.sticker{position:fixed;z-index:5;pointer-events:none;}
+.dudu{width:180px;}
+.bubu{width:120px;}
+.top-left{top:10px;left:10px;}
+.bottom-right{bottom:10px;right:10px;}
+.bottom-left{bottom:10px;left:10px;}
+.top-right{top:10px;right:10px;}
+
+/* Title */
+h1{
+  font-family:'Great Vibes', cursive;
+  font-size:60px;
+  color:white;
+  margin-bottom:50px;
+}
+
+/* Grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3, 400px);
+  grid-template-rows:repeat(4, 400px);
+  gap:40px;
+}
+
+/* Cards */
+.card{
+  width:400px;
+  height:400px;
+  perspective:1000px;
+  cursor:pointer;
+}
+
+.card-inner{
+  width:100%;
+  height:100%;
+  position:relative;
+  transform-style:preserve-3d;
+  transition:0.8s;
+}
+
+.card.flip .card-inner{
+  transform:rotateY(180deg);
+}
+
+.card-front,.card-back{
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:25px;
+  backface-visibility:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:30px;
+}
+
+.card-front{
+  background:white;
+  color:#ff4d6d;
+  font-weight:600;
+  font-size:22px;
+}
+
+.card-back{
+  transform:rotateY(180deg);
+  background:black;
+}
+
+/* Default cover */
+.card-back img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:25px;
+}
+
+/* Only special images */
+.contain-img{
+  object-fit:contain !important;
+  background:black;
+}
+
+.next-btn{
+  margin-top:50px;
+  padding:12px 30px;
+  background:white;
+  color:#ff4d6d;
+  border:none;
+  border-radius:25px;
+  font-size:18px;
+  cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<img src="dudu-heart.png" class="sticker dudu top-left">
+<img src="dudu-heart.png" class="sticker dudu bottom-right">
+<img src="bubu-shy.png" class="sticker bubu bottom-left">
+<img src="bubu-shy.png" class="sticker bubu top-right">
+
+<h1>Our Memories 💖</h1>
+
+<div class="grid">
+
+<!-- 1 -->
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">Every love story is beautiful, but ours is my favorite.</div>
+<div class="card-back"><img src="mem1.jpeg"></div>
+</div></div>
+
+<!-- 2 (CONTAIN) -->
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">You are my today and all of my tomorrows.</div>
+<div class="card-back"><img src="mem2.jpg" class="contain-img"></div>
+</div></div>
+
+<!-- 3 -->
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">With you, every moment feels magical.</div>
+<div class="card-back"><img src="mem3.jpeg"></div>
+</div></div>
+
+<!-- 4 (CONTAIN) -->
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">You are the reason behind my happiest smiles.</div>
+<div class="card-back"><img src="mem4.jpeg" class="contain-img"></div>
+</div></div>
+
+<!-- 5 -->
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">In your arms is where I belong.</div>
+<div class="card-back"><img src="mem5.jpeg"></div>
+</div></div>
+
+<!-- 6 -->
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">Forever isn't long enough with you.</div>
+<div class="card-back"><img src="mem6.jpeg"></div>
+</div></div>
+
+<!-- 7 -->
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">Your love makes my world brighter.</div>
+<div class="card-back"><img src="mem7.jpeg"></div>
+</div></div>
+
+<!-- 8 -->
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">Every moment with you is a blessing.</div>
+<div class="card-back"><img src="mem8.jpeg"></div>
+</div></div>
+
+<!-- 9 -->
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">You complete me.</div>
+<div class="card-back"><img src="mem9.jpeg"></div>
+</div></div>
+
+<!-- 10 (CONTAIN) -->
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">My heart beats for you.</div>
+<div class="card-back"><img src="mem10.jpeg" class="contain-img"></div>
+</div></div>
+
+<!-- 11 -->
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">You are my forever person.</div>
+<div class="card-back"><img src="mem11.jpeg"></div>
+</div></div>
+
+<!-- 12 -->
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">Together is my favorite place.</div>
+<div class="card-back"><img src="mem12.jpeg"></div>
+</div></div>
+
+</div>
+
+<button class="next-btn" onclick="openProposal()">Next</button>
+
+<script>
+let openedCard=null;
+
+function flipCard(card){
+  if(openedCard===card){
+    card.classList.remove("flip");
+    openedCard=null;
+    return;
+  }
+  if(openedCard){
+    openedCard.classList.remove("flip");
+  }
+  card.classList.add("flip");
+  openedCard=card;
+}
+
+function openProposal(){
+  window.location.href="next.html";
+}
+</script>
+
+</body>
+</html>

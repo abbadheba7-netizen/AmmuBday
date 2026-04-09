@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday 🎆</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  height:100vh;
+  background:black;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
+
+/* 🎇 Container */
+.main{
+  display:flex;
+  align-items:center;
+  gap:40px;
+  z-index:10;
+}
+
+/* 🎇 Title */
+.title{
+  font-family:'Great Vibes', cursive;
+  font-size:100px;
+  color:#ff4da6;
+  text-shadow:0 0 20px #ff4da6,0 0 50px #ff80bf;
+  display:flex;
+  gap:25px;
+}
+
+/* Word animation */
+.title span{
+  display:inline-block;
+  transform:translateY(-250px);
+  opacity:0;
+  animation:dropBounce 0.9s ease forwards;
+}
+
+.title span:nth-child(1){animation-delay:0.3s;}
+.title span:nth-child(2){animation-delay:1s;}
+.title span:nth-child(3){animation-delay:1.7s;}
+
+@keyframes dropBounce{
+  0%{transform:translateY(-250px);opacity:0;}
+  60%{transform:translateY(40px);opacity:1;}
+  80%{transform:translateY(-15px);}
+  100%{transform:translateY(0);opacity:1;}
+}
+
+/* 🖼 Image */
+.side-img{
+  max-width:400px;
+  height:auto;
+}
+
+/* 🎆 Firework particles */
+.spark{
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  animation:explode 1.2s ease-out forwards;
+}
+
+@keyframes explode{
+  0%{transform:translate(0,0);opacity:1;}
+  100%{transform:translate(var(--x), var(--y));opacity:0;}
+}
+
+.spark::after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:inherit;
+  filter:blur(6px);
+}
+
+/* 🏠 Home button */
+.home{
+  position:absolute;
+  top:20px;
+  right:25px;
+  font-size:20px;
+  color:white;
+  cursor:pointer;
+  background:rgba(255,255,255,0.1);
+  padding:8px 12px;
+  border-radius:50%;
+  backdrop-filter:blur(5px);
+  transition:0.3s;
+}
+
+.home:hover{
+  background:rgba(255,255,255,0.3);
+}
+</style>
+</head>
+<body>
+
+<div class="home" onclick="goHome()">⌂</div>
+
+<div class="main">
+  <div class="title">
+    <span>Happy</span>
+    <span>Birthday</span>
+    <span>Sita 💖</span>
+  </div>
+  <img src="sita.png" class="side-img">
+</div>
+
+<script>
+
+/* 🎆 Single Firework */
+function createFirework(){
+  let x = Math.random()*window.innerWidth;
+  let y = Math.random()*window.innerHeight*0.6;
+
+  let colors = ["#ff4da6","#ffd700","#00e5ff","#ff9800","#ffffff","#ff1744"];
+
+  for(let i=0;i<120;i++){
+    let s=document.createElement("div");
+    s.className="spark";
+
+    let angle=Math.random()*2*Math.PI;
+    let radius=120+Math.random()*180;
+
+    s.style.left=x+"px";
+    s.style.top=y+"px";
+
+    s.style.setProperty("--x",Math.cos(angle)*radius+"px");
+    s.style.setProperty("--y",Math.sin(angle)*radius+"px");
+
+    s.style.background=colors[Math.floor(Math.random()*colors.length)];
+
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),1200);
+  }
+}
+
+/* 🎇 Pattern loop */
+function fireworkLoop(){
+
+  let c1 = 3 + Math.floor(Math.random()*2);
+  for(let i=0;i<c1;i++){
+    setTimeout(createFirework, i*300);
+  }
+
+  setTimeout(()=>{
+    for(let i=0;i<2;i++){
+      setTimeout(createFirework, i*400);
+    }
+  },1200);
+
+  setTimeout(()=>{
+    let c2 = 3 + Math.floor(Math.random()*2);
+    for(let i=0;i<c2;i++){
+      setTimeout(createFirework, i*300);
+    }
+  },2200);
+}
+
+setInterval(fireworkLoop, 3500);
+fireworkLoop();
+
+/* Home */
+function goHome(){
+  window.location.href="index.html";
+}
+</script>
+
+</body>
+</html>
